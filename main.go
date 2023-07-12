@@ -46,7 +46,8 @@ func processOrders(orders []Order) map[string]int {
 			quantity, err := strconv.Atoi(order.Quantity)
 			if err != nil {
 				fmt.Printf("Failed to parse quantity for order %s: %v\n", order.OrderID, err)
-				continue
+				// Assign a quantity of 0 and continue
+				quantity = 0
 			}
 			// Add the quantity to the map
 			items[order.ItemID] += quantity
